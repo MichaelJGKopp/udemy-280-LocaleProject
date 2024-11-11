@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 
@@ -46,6 +47,13 @@ public class Main {
       NumberFormat decimalInfo = NumberFormat.getNumberInstance(locale);
       decimalInfo.setMaximumFractionDigits(6);  // by default 3
       System.out.println(decimalInfo.format(123456789.123456));
+      
+      NumberFormat currency = NumberFormat.getCurrencyInstance(locale);
+      Currency localCurrency = Currency.getInstance(locale);
+      System.out.println(currency.format(555.555) + " [" +
+                           localCurrency.getCurrencyCode() + "] " +
+                           localCurrency.getDisplayName(locale) + "/" +
+                           localCurrency.getDisplayName());
     }
   }
 }
