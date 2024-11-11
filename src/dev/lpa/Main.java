@@ -10,7 +10,7 @@ import java.util.Locale;
 public class Main {
   
   public static void main(String[] args) {
-    
+
 //    Locale.setDefault(Locale.US);
     System.out.println("Default Locale: " + Locale.getDefault());
     
@@ -23,7 +23,7 @@ public class Main {
     
     var dtf = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM);
     
-    for (var locale: List.of(Locale.getDefault(), Locale.US, en, enAU, enCA,
+    for (var locale : List.of(Locale.getDefault(), Locale.US, en, enAU, enCA,
       Locale.UK, enIN, enNZ)) {
       LocalDateTime now = LocalDateTime.now();
       System.out.printf("%-40s %s%n",
@@ -39,6 +39,8 @@ public class Main {
       Locale.TAIWAN, Locale.JAPAN, Locale.ITALY)) {
       System.out.println(locale.getDisplayName() + " : " + locale.getDisplayName(locale) + "=\n\t"
                            + May5.format(wdayMonth.withLocale(locale)));
+      System.out.printf(locale, "\t%1$tA, %1$tB %1$te, %1$tY %n", May5);
+      System.out.print(String.format(locale, "\t%1$tA, %1$tB %1$te, %1$tY %n", May5));
     }
   }
 }
