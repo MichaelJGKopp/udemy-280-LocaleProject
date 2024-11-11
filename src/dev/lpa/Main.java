@@ -1,5 +1,6 @@
 package dev.lpa;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -27,6 +28,17 @@ public class Main {
       LocalDateTime now = LocalDateTime.now();
       System.out.printf("%-40s %s%n",
         locale.getDisplayName(), now.format(dtf.withLocale(locale)));
+    }
+    
+    DateTimeFormatter wdayMonth = DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy");
+    LocalDate May5 = LocalDate.of(2020, 5, 5);
+    
+    System.out.println("-----------------------------------");
+    for (var locale : List.of(
+      Locale.CANADA, Locale.CANADA_FRENCH, Locale.FRANCE, Locale.GERMANY,
+      Locale.TAIWAN, Locale.JAPAN, Locale.ITALY)) {
+      System.out.println(locale.getDisplayName() + " : " + locale.getDisplayName(locale) + "=\n\t"
+                           + May5.format(wdayMonth.withLocale(locale)));
     }
   }
 }
