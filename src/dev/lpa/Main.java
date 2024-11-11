@@ -1,5 +1,6 @@
 package dev.lpa;
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -41,6 +42,10 @@ public class Main {
                            + May5.format(wdayMonth.withLocale(locale)));
       System.out.printf(locale, "\t%1$tA, %1$tB %1$te, %1$tY %n", May5);
       System.out.print(String.format(locale, "\t%1$tA, %1$tB %1$te, %1$tY %n", May5));
+      
+      NumberFormat decimalInfo = NumberFormat.getNumberInstance(locale);
+      decimalInfo.setMaximumFractionDigits(6);  // by default 3
+      System.out.println(decimalInfo.format(123456789.123456));
     }
   }
 }
