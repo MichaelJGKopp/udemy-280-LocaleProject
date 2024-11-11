@@ -1,5 +1,6 @@
 package dev.lpa;
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,12 +9,13 @@ import java.time.format.FormatStyle;
 import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class Main {
   
   public static void main(String[] args) {
 
-//    Locale.setDefault(Locale.US);
+    Locale.setDefault(Locale.US);
     System.out.println("Default Locale: " + Locale.getDefault());
     
     Locale en = new Locale("en");
@@ -55,5 +57,14 @@ public class Main {
                            localCurrency.getDisplayName(locale) + "/" +
                            localCurrency.getDisplayName());
     }
+    
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Enter the loan amount: ");
+//    BigDecimal myLoan = new BigDecimal("1,000.50"); // only numbers and decimal separator allowed
+    scanner.useLocale(Locale.ITALY);
+    BigDecimal myLoan = scanner.nextBigDecimal();
+    NumberFormat decimalInfo = NumberFormat.getNumberInstance(Locale.ITALY);
+    decimalInfo.setMinimumFractionDigits(2);
+    System.out.println("My Loan " + decimalInfo.format(myLoan));
   }
 }
